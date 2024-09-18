@@ -11,7 +11,7 @@ backgroundVideoWebm: /glob.webm
 videoOpacity: 1.0
 textShadow: true
 fullscreen: true
-downArrow: true
+downArrow: false
 whiteText: false  # force white text in the jumbotron
 links:
   - title: About me
