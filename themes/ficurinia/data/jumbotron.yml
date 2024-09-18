@@ -1,0 +1,20 @@
+title: Aditya Hebballe
+hugeTitle: true
+subtitle: Hecker hai bhai hecker
+image: /aditya.jpg
+imagePosition: left  # values: left, right, top, bottom
+background: /img/hackerman.png
+#backgroundVideo: /globe.mp4  # will replace the background image
+# it's best to provide both an mp4 and a web source for the video for better compatibility
+backgroundVideoMp4: /globe.mp4
+backgroundVideoWebm: /glob.webm
+videoOpacity: 1.0
+textShadow: true
+fullscreen: true
+downArrow: true
+whiteText: false  # force white text in the jumbotron
+links:
+  - title: About me
+    link: /pages/about
+  - title: Read my blog
+    link: /posts
