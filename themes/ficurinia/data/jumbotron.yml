@@ -1,10 +1,10 @@
 title: Aditya Hebballe
-hugeTitle: true
-subtitle: Hecker hai bhai hecker
-image: /aditya.jpg
-imagePosition: left  # values: left, right, top, bottom
-#background: /img/hackerman.png
-backgroundVideo: /hack.mp4  # will replace the background image
+hugeTitle: false
+subtitle: Cybersecurity Enthusiast
+#image: /aditya.jpg
+#imagePosition: left  # values: left, right, top, bottom
+background: /aditya.jpg
+#backgroundVideo: /hack.mp4  # will replace the background image
 # it's best to provide both an mp4 and a web source for the video for better compatibility
 backgroundVideoMp4: /hack.mp4
 backgroundVideoWebm: /hack.webm
@@ -15,6 +15,6 @@ downArrow: false
 whiteText: false  # force white text in the jumbotron
 links:
   - title: About me
-    link: /pages/about
+    link: /about
   - title: Read my blog
     link: /posts

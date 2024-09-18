@@ -127,16 +127,17 @@ summaryLength = 30  # number of words for article summaries
         url = "/about/"
         weight = 10
     # these links (menu.icons) will be added as icon links below the main nav
-    #[[menu.icons]]
-    #    identifier = "gitlab"
-    #    name = "GitLab"
-    #    url = "https://gitlab.com/gabmus"
-    #    weight = 10
-    #[[menu.icons]]
-    #    identifier = "gnome"
-    #    name = "GNOME GitLab"
-    #    url = "https://gitlab.gnome.org/gabmus"
-    #    weight = 20
+    [[menu.icons]]
+        identifier = "github"
+        name = "Gitbook"
+        url = "https://aditya-3.gitbook.io/oscp/"
+        weight = 20
+    [[menu.icons]]
+        identifier = "LinkedIn"
+        name = "LinkedIn"
+        url = "https://www.linkedin.com/in/aditya-hebballe-9b9607277/"
+        weight = 10
+
 
 # this section is necessary if you want infinite scrolling
 # it allows to output the article list as paged JSON so that "pages" can be retrieved via javascript
