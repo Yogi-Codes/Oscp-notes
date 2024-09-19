@@ -1,7 +1,12 @@
 ---
+featured: "true"
+tags:
+  - OSCP
+  - offsec
+image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-19T09:13:38.533Z
+lastmod: 2024-09-19T10:03:46.742Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
