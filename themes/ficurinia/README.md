@@ -282,7 +282,7 @@ You can tweak the TOC settings in your `config.toml`:
 [markup]
   [markup.tableOfContents]
     endLevel = 5
-    ordered = false
+    ordered = true
     startLevel = 1
 ```
 
