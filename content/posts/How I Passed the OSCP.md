@@ -1,12 +1,11 @@
 ---
-featured: true
 tags:
   - OSCP
   - offsec
 image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-19T10:03:46.742Z
+lastmod: 2024-09-19T10:11:52.012Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -141,16 +140,6 @@ The other tool I use is [linux-smart-enumeration](https://github.com/diego-treit
 
 For linux always check `/opt` and check if you belong in any [interesting groups](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/interesting-groups-linux-pe).
 
-## Tunneling
-
-For tunneling I have written a script called [proxify.sh](https://github.com/AdityaHebballe/Pentest-Scripts/blob/main/proxify.sh)
-
-This script:
-
-* Starts a python server in your directory with ligolo or chisel automatically
-* Gives the commands for transferring the binaries for chisel or ligolo
-* Gives the commands required for the target to connect to our machine with auto-filled tun0 ip address
-
 ## Active Directory
 
 Use this [mindmap](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg) for AD
@@ -274,7 +263,7 @@ When it comes to AD methodology is very important as missing one minor detail ca
   SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
   ```
 
-# Got Admin
+### Got Admin
 
 * After getting admin always use secretsdump
   ```bash
