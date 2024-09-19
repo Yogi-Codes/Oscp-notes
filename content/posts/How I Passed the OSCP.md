@@ -1,5 +1,5 @@
 ---
-featured: "true"
+featured: true
 tags:
   - OSCP
   - offsec
