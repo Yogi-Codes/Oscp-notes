@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T13:32:33.467Z
+lastmod: 2024-09-20T13:35:01.610Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -69,6 +69,8 @@ I did all the challenge labs except Skylark which I had completed 50% of. Medtec
 OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalones. I found them much easier than the actual exam.
 
 # Tips & Tricks
+
+![coin.gif](/postimgs/Images/coin.gif)
 
 Whenever you are hacking a machine don't be afraid to lookup hints, it's always better to learn what you don't know than stumbling around in the dark but only look it up when you have already tried everything you know.
 
