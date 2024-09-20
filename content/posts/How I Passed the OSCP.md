@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:21:05.907Z
+lastmod: 2024-09-20T19:26:20.463Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -38,13 +38,13 @@ Towards the end of the course, Windows and Linux Privilege Escalation was covere
 After TCM Security's course I started with the HTB machine on [TJNull's list](https://docs.google.com/spreadsheets/u/1/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/htmlview?pli=1#) . The machines that helped me the most for AD were **Absolute**, **Cerberus** , **Forest** , **Return**.\
 These were harder than the OSCP but it was good material.
 
-I would recommend the better list now which is the [LainKusanagi's list](https://docs.google.com/spreadsheets/u/0/d/18weuz_Eeynr6sXFQ87Cd5F0slOj9Z6rt/htmlview?pli=1), which removed a few machines from TJNull's list and added more good practice machines to align closer with the OSCP exam.
+I would recommend the better list now which is the [LainKusanagi's list](https://docs.google.com/spreadsheets/u/0/d/18weuz_Eeynr6sXFQ87Cd5F0slOj9Z6rt/htmlview?pli=1), which removed a few out-of-scope machines from TJNull's list and added more practice machines to align closer with the OSCP exam.
 
 ## CPTS Path
 
 This was the most comprehensive material I ever covered for the OSCP and most of my notes for the OSCP are from doing the CPTS Path from HTB Academy. Make an account at HTB Academy and head [here](https://academy.hackthebox.com/paths/jobrole). Now choose the penetration tester Job Role path.
 
-I used the student subscription which allowed access to the whole path. Skip the SQLMap and Metasploit sections if OSCP is your only goal.
+I used the student subscription which allowed access to the whole path, and the best part was I got to keep the material as I completed 100% of it. Skip the SQLMap and Metasploit sections if OSCP is your only goal.
 
 ## Vulnlab
 
