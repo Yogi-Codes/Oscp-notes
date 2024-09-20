@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T13:24:54.124Z
+lastmod: 2024-09-20T13:27:46.092Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -292,6 +292,8 @@ And note that you can use the same reverse shell (for example reverse.exe you ge
 Once a reverse shell is connected you can start a listener again and connect to the same port once again.
 
 # Exam Experience
+
+![studying-windy.gif](/postimgs/Images/studying-windy.gif)
 
 I booked my exam for September 15, 2024, nearly 4 months after purchasing the course. Although I never felt fully prepared, I bit the bullet and went for it. The exam turned out to be much tougher than I expected.
 
