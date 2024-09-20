@@ -6,9 +6,9 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:26:20.463Z
+lastmod: 2024-09-20T19:37:04.671Z
 ---
-I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
+I am a student pursuing a Bachelor's degree in Computer Science and Engineering and I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
 
 Now, let’s spill the beans! How did I score 90 on my first attempt? There must be a secret, right?
@@ -118,7 +118,7 @@ One thing that often gets overlooked is the power of scripts. Writing a Bash or 
 
 Below are a few scripts I’ve made to streamline my workflow. They're not perfect, but they’ve saved me a lot of time. Feel free to take inspiration and adapt them to suit your needs.
 
-Check out my [github repo](https://github.com/AdityaHebballe/Pentest-Scripts) for installation instructions for all of them. Any suggestions are welcome
+Check out my [github repo](https://github.com/AdityaHebballe/Pentest-Scripts) for installation instructions for all of them. Any suggestions are welcome.
 
 ### Proxify.sh
 
