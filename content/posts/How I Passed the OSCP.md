@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T13:35:01.610Z
+lastmod: 2024-09-20T13:36:40.780Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -56,7 +56,9 @@ I would recommend to do this list of [recommendations](https://wiki.vulnlab.com/
 
 Ok I'll admit, shelling out \$2,599 for the Learn One subscription was a bit terrifying and the stakes were never higher. I opted the one year subscription and started it from May 24th.
 
-I will not be going into much detail about the course but I will share how much I am allowed toWhenever you are hacking a machine don't be afraid to lookup hints, it's always better to learn what you don't know than stumbling around in the dark but only look it up when you have already tried everything you know.
+![money.gif](/postimgs/Images/money.gif)
+
+I will not be going into much detail about the course but I will share how much I am allowed to.
 
 ## Course Material
 
