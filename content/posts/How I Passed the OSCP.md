@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:20:05.742Z
+lastmod: 2024-09-20T19:21:05.907Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -154,22 +154,22 @@ Add these to you `~/.zshrc` (or the config to whatever shell you use ).
 
 * Use exa to make `ls` prettier and with icons for better readability
 
-```
+```bash
 alias ls='exa --icons'
 ```
 
 ![How I Passed the OSCP\_5.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_5.png)\
-\==Colorful!==
+Colorful!
 
 * Zoxide enhances your terminal navigation by intelligently tracking your directory usage, allowing for faster and more efficient access to frequently visited directories with minimal typing. I recommend watching this [video](https://www.youtube.com/watch?v=aghxkpyRVDY) on how it does that
 
-```
+```bash
  alias cd='z'
 ```
 
 * pen is easier to type than penelope.py and I use this listener the most.
 
-```
+```bash
 pen='/home/kali/Documents/penelope/penelope.py'
 ```
 
