@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:12:01.096Z
+lastmod: 2024-09-20T19:17:43.845Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -44,7 +44,7 @@ I would recommend the better list now which is the [LainKusanagi's list](https:/
 
 This was the most comprehensive material I ever covered for the OSCP and most of my notes for the OSCP are from doing the CPTS Path from HTB Academy. Make an account at HTB Academy and head [here](https://academy.hackthebox.com/paths/jobrole). Now choose the penetration tester Job Role path.
 
-I used the student subscription which allowed access to the whole path. Do skip the SQLMap and Metasploit sections if OSCP is your only goal.
+I used the student subscription which allowed access to the whole path. Skip the SQLMap and Metasploit sections if OSCP is your only goal.
 
 ## Vulnlab
 
@@ -67,9 +67,11 @@ The course material was underwhelming and was nowhere close to the thoroughness 
 
 ## Challenge Labs
 
-I did all the challenge labs except Skylark which I had completed 50% of. Medtech, Relia and Skylark are big networks with 10-20 machines. The machines were interconnected and clues from one machine could be crucial to gain control of the next machine.
+I did all the challenge labs except Skylark which I had completed 50% of. Medtech, Relia and Skylark were large networks.
 
 OSCP A,B and C were exam-like and had 3 machines for AD network and 3 standalones. I found them much easier than the actual exam.
+
+I think that's the extent of what I'm allowed to reveal and will stop here.
 
 # Exam Experience
 
@@ -261,7 +263,7 @@ For linux always check `/opt` and check if you belong in any [interesting groups
 
 ## Active Directory
 
-Use this [mindmap](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg) for AD
+Use this [mindmap](https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg) for AD, and also use [ntlmtheft](https://github.com/Greenwolf/ntlm_theft) for client side attacks
 
 Always check the password policy if available first:
 
