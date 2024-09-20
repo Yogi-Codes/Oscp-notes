@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:09:22.971Z
+lastmod: 2024-09-20T19:12:01.096Z
 ---
 I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.\
 Before this, I had mainly worked with MERN Stack Web Development and experimented with Arch Linux and was fully immersed in all things Linux.
@@ -31,7 +31,7 @@ Setting up the lab was a unique experience that gave me insights into the inner 
 
 This is where I learned various AD attack techniques such as Pass-the-Hash, Pass-the-Ticket, Kerberoasting, AS-REP Roasting, and Silver Ticket Attacks.
 
-Towards the end of the course, Windows and Linux Privilege Escalation was covered, though not comprehensively. The Web Attacks section was also moderately thorough.
+Towards the end of the course, Windows and Linux Privilege Escalation was covered, although not comprehensively. The Web Attacks section was also moderately thorough.
 
 ## Hack The Box
 
