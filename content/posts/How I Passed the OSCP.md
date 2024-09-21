@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-20T19:39:56.505Z
+lastmod: 2024-09-21T02:04:19.431Z
 ---
 I am a student pursuing a Bachelor's degree in Computer Science and Engineering and I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.
 
@@ -24,7 +24,7 @@ These were the preparation steps I took before even buying the course and I did 
 
 ## TCM Security
 
-I first completed the [Practical Ethical Hacking](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course) course by TCM, which gave me a solid understanding of what I needed to learn and the breadth of topics I had to cover.
+I first completed the [Practical Ethical Hacking](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course) course by TCM and it took me around 10 days to complete, it gave me a solid understanding of what I needed to learn and the breadth of topics I had to cover.
 
 The course introduced me to the **enumeration** methodology I would need to develop and provided a detailed overview of Active Directory. It included setting up a lab with one Domain Controller running Windows Server and two workstations running standard Windows.
 
@@ -43,7 +43,9 @@ I would recommend the better list now which is the [LainKusanagi's list](https:/
 
 ## CPTS Path
 
-This was the most comprehensive material I ever covered for the OSCP and most of my notes for the OSCP are from doing the CPTS Path from HTB Academy. Make an account at HTB Academy and head [here](https://academy.hackthebox.com/paths/jobrole). Now choose the penetration tester Job Role path.
+I started this right after TCM's course and it took me around 1.5 months to complete. I was parallelly practicing on hack the box.
+
+This was the most **comprehensive** material I ever covered for the OSCP and most of my notes for the OSCP are from doing the CPTS Path from HTB Academy. Make an account at HTB Academy and head [here](https://academy.hackthebox.com/paths/jobrole). Now choose the penetration tester Job Role path.
 
 I used the student subscription which allowed access to the whole path, and the best part was I got to keep the material as I completed 100% of it. Skip the SQLMap and Metasploit sections if OSCP is your only goal.
 
@@ -193,7 +195,7 @@ For **Windows** try the Powershell Base64 encoded from revshells.com
 And note that you can use the same reverse shell (for example reverse.exe you generated using msfvenom) multiple times.\
 Once a reverse shell is connected you can start a listener again and connect to the same port once again.
 
-Use prepend *rlwrap* before netcat command so that you can navigate the terminal better.
+Prepend *rlwrap* before netcat command so that you can navigate the terminal better.
 
 ## Windows Privilege Escalation
 
