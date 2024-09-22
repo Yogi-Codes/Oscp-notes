@@ -6,7 +6,7 @@ image: https://i.ytimg.com/vi/qqGb25h-5Y8/maxresdefault.jpg
 featured: true
 title: How I Passed the OSCP
 date: 2024-09-18T18:38:38.550Z
-lastmod: 2024-09-21T02:04:19.431Z
+lastmod: 2024-09-22T08:05:23.649Z
 ---
 I am a student pursuing a Bachelor's degree in Computer Science and Engineering and I passed the OSCP just six months into my cybersecurity journey, despite having limited prior experience.
 
@@ -17,6 +17,8 @@ Now, let’s spill the beans! How did I score 90 on my first attempt? There must
 ![How I Passed the OSCP.gif](/postimgs/Images/How%20I%20Passed%20the%20OSCP.gif)
 
 Keep in mind, even though the exam format for OSCP+ has changed, the core modules and topics remain the same. The tips I share here apply for both OSCP and OSCP+.
+
+Check out my gitbook at https://aditya-3.gitbook.io/oscp
 
 # Steps I Took Before Buying the Course
 

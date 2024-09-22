@@ -10,9 +10,11 @@ As a certified OSCP and a Computer Science student, I'm passionate about ethical
 
 With the OSCP under my belt, the journey doesn't stop here as there's always more to discover
 
-- Check out my cheatsheet on [Gitbook](https://aditya-3.gitbook.io/oscp)(WIP)
+- Check out my cheatsheet on [Gitbook](https://aditya-3.gitbook.io/oscp)
 
 ![about.png](/about/about.png)
+
+![about.png](/postimgs/Images/oscp.png)
 
 
 # Contact 
